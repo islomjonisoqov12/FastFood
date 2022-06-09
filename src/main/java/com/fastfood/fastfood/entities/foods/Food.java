@@ -12,6 +12,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 
 @NoArgsConstructor
@@ -27,9 +28,9 @@ public class Food extends AbsNameEntity {
     @Column(nullable = false)
     String imageLink;
 
-    LocalDateTime availableFrom;
+    LocalTime availableFrom;
 
-    LocalDateTime availableTo;
+    LocalTime availableTo;
 
     Integer preparationTimeInMin;
 

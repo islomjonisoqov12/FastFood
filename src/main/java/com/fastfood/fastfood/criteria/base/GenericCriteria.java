@@ -14,11 +14,9 @@ import java.io.Serializable;
 @ParameterObject
 public class GenericCriteria implements BaseGenericCriteria, Serializable {
 
-    protected Long selfId;
-
     protected Integer page;
 
-    protected Integer perPage;
+    protected Integer size;
 
     protected String sortBy;
 
@@ -26,5 +24,9 @@ public class GenericCriteria implements BaseGenericCriteria, Serializable {
 
     public String getSortDirection() {
         return sortDirection == null || sortDirection.equals("") ? " ASC " : sortDirection;
+    }
+
+    public String getSortBy() {
+        return sortBy == null || sortBy.equals("") ? "id":sortBy;
     }
 }
