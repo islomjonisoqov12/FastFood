@@ -31,6 +31,4 @@ public class RedisUser implements Serializable {
 
     List<Permission> permissions = new ArrayList<>();
 
-    String chosenLanguage;
-
 }

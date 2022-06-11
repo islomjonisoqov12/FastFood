@@ -1,10 +1,19 @@
 package com.fastfood.fastfood.projection.food;
 
-public interface FoodProjection {
-    String getId();
+import com.fastfood.fastfood.projection.base.GenericProjection;
 
-    String getName();
+import java.time.LocalTime;
 
+public interface FoodProjection extends GenericProjection {
 
-    // TODO: 6/10/2022 write methods
+    String getImage();
+
+    LocalTime getAvailableFrom();
+
+    LocalTime getAvailableTo();
+
+    Integer getPreparationTimeInMin();
+
+    Long getPrice();
+
 }

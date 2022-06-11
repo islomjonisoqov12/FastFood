@@ -33,14 +33,20 @@ public class CategoryController extends AbstractController<CategoryService> {
     }
 
     @GetMapping(PATH+"/category/{id}")
-    public HttpEntity<CategoryDto> getById(@PathVariable String id){
-        CategoryDto categoryDto = service.get(id);
+    public HttpEntity<CategoryDto> getById(@RequestHeader String lang, @PathVariable String id){
+        CategoryDto categoryDto = service.get(id, lang);
         return ResponseEntity.ok(categoryDto);
     }
 
     @GetMapping(PATH+"/category-all")
-    public HttpEntity<List<CategoryDto>> getAll(GenericCriteria genericCriteria){
-        List<CategoryDto> all = service.getAll(genericCriteria);
+    public HttpEntity<List<CategoryDto>> getAll(@RequestHeader String lang, GenericCriteria genericCriteria){
+        List<CategoryDto> all = service.getAll(genericCriteria, lang);
         return ResponseEntity.ok(all);
+    }
+
+    @DeleteMapping(PATH+"/category/{id}")
+    public HttpEntity<ApiResponse<String>> delete(@PathVariable String id){
+        service.delete(id);
+        return ResponseEntity.ok(ApiResponse.<String>builder().success(true).build());
     }
 }

@@ -2,6 +2,8 @@ package com.fastfood.fastfood.criteria.base;
 
 import lombok.*;
 import org.springdoc.api.annotations.ParameterObject;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.io.Serializable;
@@ -31,10 +33,14 @@ public class GenericCriteria implements BaseGenericCriteria, Serializable {
     }
 
     public Integer getPage() {
-        return page==null || page ==0 ?1:page;
+        return page==null || page ==0 ? 0:page-1;
     }
 
     public Integer getSize() {
         return size==null || size<1? 15: size;
+    }
+
+    public Pageable getPageable(){
+        return PageRequest.of(getPage(), getSize(), Sort.by(getSortDirection(), getSortBy()));
     }
 }
