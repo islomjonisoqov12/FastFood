@@ -10,7 +10,7 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 
 @Configuration
 @ComponentScan("com.fastfood.fastfood")
-@EnableRedisRepositories(basePackages = "com.fastfood.fastfood.repositories")
+@EnableRedisRepositories(basePackages = {"com.fastfood.fastfood.repositories.user", "com.fastfood.fastfood.repositories.order"})
 @PropertySource("classpath:application.properties")
 
 public class RedisConfig {

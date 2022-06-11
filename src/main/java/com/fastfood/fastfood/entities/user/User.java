@@ -10,20 +10,18 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
-@Getter
-@Setter
 @NoArgsConstructor
 @Entity(name = "users")
 @Table(schema = "users")
-
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class User extends Auditable {
+public class User extends Auditable implements Serializable {
 
     @Column(nullable = false)
     String fullName;

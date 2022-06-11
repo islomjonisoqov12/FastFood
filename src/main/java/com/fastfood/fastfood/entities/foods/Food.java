@@ -1,25 +1,20 @@
 package com.fastfood.fastfood.entities.foods;
 
 import com.fastfood.fastfood.entities.base.AbsNameEntity;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDateTime;
+import javax.persistence.*;
 import java.time.LocalTime;
 
 
 @NoArgsConstructor
-@Data
+@AllArgsConstructor
+@Getter
+@Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity(name = "foods")
-@Table(schema = "food")
+@Table(schema = "food", uniqueConstraints = {})
 public class Food extends AbsNameEntity {
 
     @Column(nullable = false)

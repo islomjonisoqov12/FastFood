@@ -1,0 +1,39 @@
+
+[
+  {
+    "nameUz": "osh",
+    "nameRu": "ош",
+    "nameOz": "ош",
+    "nameEn": "osh",
+    "descriptionUz": "malumot",
+    "descriptionRu": "Информация",
+    "descriptionOz": "ИнформацияOz",
+    "descriptionEn": "Palov (plov) is the most widespread and favorite dish of Uzbekistan.",
+    "price": 20000,
+    "imageLink": "link",
+    "availableFrom": {
+      "hour": 11,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "availableTo": {
+      "hour": 15,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "preparationTimeInMin": 20,
+    "categoryId": "string"
+  },
+  {
+    "nameUz": "categoryuz",
+    "nameRu": "categoryru",
+    "nameOz": "categoryoz",
+    "nameEn": "categoryen",
+    "descriptionUz": "infoUz",
+    "descriptionRu": "infoRu",
+    "descriptionOz": "infoOz",
+    "descriptionEn": "infoEn"
+  }
+]

@@ -1,4 +1,5 @@
-package com.fastfood.fastfood.payload;
+package com.fastfood.fastfood.dtos;
+
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -7,13 +8,10 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Getter
 @Setter
-@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ApiResponse<T> {
+public class OrderItemDto {
 
-    String message;
+    String foodId;
 
-    T data;
-
-    boolean success;
+    Integer quantity;
 }

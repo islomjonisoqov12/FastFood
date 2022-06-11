@@ -2,10 +2,10 @@ package com.fastfood.fastfood.criteria.base;
 
 import lombok.*;
 import org.springdoc.api.annotations.ParameterObject;
+import org.springframework.data.domain.Sort;
 
 import java.io.Serializable;
 
-@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,11 +22,19 @@ public class GenericCriteria implements BaseGenericCriteria, Serializable {
 
     protected String sortDirection;
 
-    public String getSortDirection() {
-        return sortDirection == null || sortDirection.equals("") ? " ASC " : sortDirection;
+    public Sort.Direction getSortDirection() {
+        return sortDirection == null || sortDirection.equals("") || sortDirection.equals("ASC")? Sort.Direction.ASC : Sort.Direction.DESC;
     }
 
     public String getSortBy() {
-        return sortBy == null || sortBy.equals("") ? "id":sortBy;
+        return sortBy == null || sortBy.equals("") ? "id" :sortBy;
+    }
+
+    public Integer getPage() {
+        return page==null || page ==0 ?1:page;
+    }
+
+    public Integer getSize() {
+        return size==null || size<1? 15: size;
     }
 }

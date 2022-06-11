@@ -6,9 +6,15 @@ import com.fastfood.fastfood.dtos.user.UserUpdateDto;
 import com.fastfood.fastfood.entities.user.User;
 import com.fastfood.fastfood.mappers.base.AbstractMapper;
 import org.mapstruct.Mapper;
-import org.springframework.stereotype.Component;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
-@Component
-@Mapper(componentModel = "spring")
+
+@Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface UserMapper extends AbstractMapper<User, UserDto, UserCreateDto, UserUpdateDto> {
+
+    User fromUpdateDto(UserUpdateDto dto, @MappingTarget User user);
+
+    User fromCreateDto(UserCreateDto dto);
+
 }

@@ -1,13 +1,15 @@
 package com.fastfood.fastfood.entities.foods;
 
 import com.fastfood.fastfood.entities.base.AbsNameEntity;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity(name = "categories")
 @Table(schema = "food")

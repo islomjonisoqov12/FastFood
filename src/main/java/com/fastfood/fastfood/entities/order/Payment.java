@@ -5,7 +5,7 @@ import com.fastfood.fastfood.entities.base.Auditable;
 import com.fastfood.fastfood.enums.PayType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
@@ -15,7 +15,8 @@ import javax.persistence.Table;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity(name = "payments")
 @Table(schema = "orders")

@@ -1,13 +1,15 @@
 package com.fastfood.fastfood;
 
-import com.fastfood.fastfood.entities.order.Cart;
-import com.fastfood.fastfood.entities.order.OrderItem;
-import com.fastfood.fastfood.entities.user.VerificationCode;
+
+import com.fastfood.fastfood.properties.OpenApiProperties;
 import com.fastfood.fastfood.repositories.order.CartRepository;
+import com.fastfood.fastfood.repositories.user.RedisUserRepository;
 import com.fastfood.fastfood.repositories.user.VerificationCodeRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
 import javax.annotation.Resource;
@@ -17,6 +19,10 @@ import java.util.Collections;
 import java.util.Optional;
 
 @SpringBootApplication
+@EnableConfigurationProperties({
+        OpenApiProperties.class,
+        ServerProperties.class
+})
 public class FastFoodApplication {
 
 
@@ -29,6 +35,8 @@ public class FastFoodApplication {
     VerificationCodeRepository verificationCodeRepository;
     @Resource
     CartRepository cartRepository;
+    @Resource
+    RedisUserRepository redisUserRepository;
 
     @Bean
     CommandLineRunner runner(){
@@ -56,6 +64,17 @@ public class FastFoodApplication {
 //            Optional<Cart> byId = cartRepository.findById(cart.getId());
 //            System.out.println(byId.isPresent());
 //            System.out.println(byId.get());
+//            RedisUser user = RedisUser.builder()
+//                    .permissions(Collections.emptyList())
+//                    .phoneNumber("+998976990897")
+//                    .role(Role.CUSTOMER)
+//                    .chosenLanguage("ru")
+//                    .build();
+//            redisUserRepository.save(user);
+//
+//            redisUserRepository.findById("user.getId()");
+
+
         });
 
     }

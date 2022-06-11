@@ -1,6 +1,6 @@
 package com.fastfood.fastfood.entities.base;
 
-import lombok.AllArgsConstructor;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,7 +21,6 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @MappedSuperclass
@@ -34,7 +33,7 @@ public class Auditable implements BaseGenericEntity {
     @CreatedDate
     @CreationTimestamp
     @Column(name = "created_at", columnDefinition = "timestamp default now()")
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @LastModifiedDate
     @UpdateTimestamp
@@ -54,4 +53,14 @@ public class Auditable implements BaseGenericEntity {
     private boolean deleted;
 
     private short status;
+
+    public Auditable(String id, LocalDateTime createdAt, LocalDateTime updatedAt, String createdBy, String updatedBy, boolean deleted, short status) {
+        this.id = id==null? UUID.randomUUID().toString():id;
+        this.createdAt = createdAt==null? LocalDateTime.now():createdAt;
+        this.updatedAt = updatedAt;
+        this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
+        this.deleted = deleted;
+        this.status = status;
+    }
 }

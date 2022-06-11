@@ -10,7 +10,8 @@ import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @MappedSuperclass
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public abstract class AbsNameEntity extends Auditable{
