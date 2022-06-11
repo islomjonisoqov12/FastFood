@@ -41,10 +41,10 @@ public class FoodCreatDto implements BaseGenericDto {
     String categoryId;
 
     public LocalTime getAvailableFrom() {
-        return availableFrom.toLocalTime();
+        return availableFrom == null ? null :availableFrom.toLocalTime();
     }
 
     public LocalTime getAvailableTo() {
-        return availableTo.toLocalTime();
+        return availableTo==null? null : availableTo.toLocalTime();
     }
 }

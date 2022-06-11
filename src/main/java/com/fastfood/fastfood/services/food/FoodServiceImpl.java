@@ -53,9 +53,12 @@ public class FoodServiceImpl extends AbstractService<FoodRepository, FoodMapper,
         Optional<Food> foodOptional = repository.findByIdAndDeletedFalse(dto.getId());
         if (foodOptional.isEmpty()) throw new FoodNotFoundException("food not found method update 53 food service");
         Food food = mapper.fromUpdateDto(dto, foodOptional.get());
-        Optional<Category> categoryOptional = categoryRepository.findByIdAndDeletedFalse(dto.getCategoryId());
-        if (categoryOptional.isEmpty()) throw new CategoryNotFoundException("Category not found in food service. Method update");
-        food.setCategory(categoryOptional.get());
+        if(dto.getCategoryId()!=null) {
+            Optional<Category> categoryOptional = categoryRepository.findByIdAndDeletedFalse(dto.getCategoryId());
+            if (categoryOptional.isEmpty())
+                throw new CategoryNotFoundException("Category not found in food service. Method update");
+            food.setCategory(categoryOptional.get());
+        }
         repository.save(food);
     }
 

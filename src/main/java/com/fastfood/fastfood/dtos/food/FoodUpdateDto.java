@@ -1,9 +1,11 @@
 package com.fastfood.fastfood.dtos.food;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fastfood.fastfood.dtos.base.GenericDto;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
+import java.sql.Time;
 import java.time.LocalTime;
 
 import lombok.*;
@@ -15,8 +17,6 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class FoodUpdateDto extends GenericDto {
-    // TODO: 6/9/2022 fields
-    @NotNull
     String nameUz;
     String nameRu;
     String nameOz;
@@ -27,10 +27,18 @@ public class FoodUpdateDto extends GenericDto {
     String descriptionEn;
     Long price;
     String imageLink;
-    @DateTimeFormat(iso=DateTimeFormat.ISO.TIME)
-    LocalTime availableFrom;
-    @DateTimeFormat(iso=DateTimeFormat.ISO.TIME)
-    LocalTime availableTo;
+    @JsonFormat(pattern="HH:mm:ss")
+    Time availableFrom;
+    @JsonFormat(pattern="HH:mm:ss")
+    Time availableTo;
     Integer preparationTimeInMin;
     String categoryId;
+
+    public LocalTime getAvailableFrom() {
+        return availableFrom == null ? null :availableFrom.toLocalTime();
+    }
+
+    public LocalTime getAvailableTo() {
+        return availableTo==null? null : availableTo.toLocalTime();
+    }
 }
